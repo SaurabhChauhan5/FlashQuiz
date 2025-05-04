@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import FlashList from "./FlashList";
+import SocialMedia from "./SocialMedia";
 import './App.css'
 import axios from 'axios'
 
@@ -8,6 +9,11 @@ function App() {
   const [categories, setCategories] = useState([]);
   const categoryEl = useRef()
   const amountEl = useRef()
+
+  // Clear flashcards when any form field changes
+  function handleFormChange() {
+    setFlashcards([]);
+  }
 
   // FOR CATEGORIES
   useEffect(() => {
@@ -57,11 +63,13 @@ function App() {
 
   return (
     <>
+      <h1 className="main-heading">FlashQuiz: <span>Test Your Knowledge!</span></h1>
+      <div className="card-instruction">Click any card to reveal the correct answer!</div>
       <form className="header" onSubmit={handleSubmit}>
 
         <div className="form-group">
           <label htmlFor="category">Category</label>
-          <select id="category" ref={categoryEl}>
+          <select id="category" ref={categoryEl} onChange={handleFormChange}>
             {categories.map(category => {
               return <option value={category.id} key={category.id}>{category.name}</option>
             })}
@@ -70,7 +78,7 @@ function App() {
 
         <div className="form-group">
           <label htmlFor="amount">Number Of Questions</label>
-          <input type="number" id="amount" min='1' step='1' defaultValue={10} ref={amountEl} />
+          <input type="number" id="amount" min='1' step='1' defaultValue={9} ref={amountEl} onChange={handleFormChange} />
         </div>
 
         <div className="form-group">
@@ -83,6 +91,8 @@ function App() {
       <div className="container">
         <FlashList flashcards={flashcards} />
       </div>
+      
+      <SocialMedia />
     </>
   );
 }

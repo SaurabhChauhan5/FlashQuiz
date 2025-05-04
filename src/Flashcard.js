@@ -1,29 +1,14 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useRef } from 'react'
 
 export default function FlashCard({ flashcard }) {
   const [flip, setFlip] = useState(false);
-  const [height, setHeight] = useState('initial')
-
   const frontEl = useRef()
   const backEl = useRef()
-
-  // HEIGHT ADJUSTMENTS
-  function setMaxHeight() {
-    const frontHeight = frontEl.current.getBoundingClientRect().height
-    const backHeight = frontEl.current.getBoundingClientRect().height
-    setHeight(Math.max(frontHeight, backHeight, 100))
-  }
-
-  useEffect(setMaxHeight, [flashcard.question, flashcard.answer, flashcard.options])
-  useEffect(() => {
-    window.addEventListener('resize', setMaxHeight)
-    return () => window.removeEventListener('resize', setMaxHeight)
-  }, [])
 
   return (
     <div
       className={`card ${flip ? 'flip' : ''}`}
-      style={{ height: height }}
+      style={{ height: '100%' }}
       onClick={() => setFlip(!flip)}>
 
       <div className='front' ref={frontEl}>
