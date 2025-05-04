@@ -25,7 +25,7 @@ function App() {
   // For Cards
   useEffect(() => {
     // FETCHING API
-   
+
   }, [])
 
 
@@ -37,28 +37,28 @@ function App() {
 
   function handleSubmit(e) {
     e.preventDefault()
-    axios.get("https://opentdb.com/api.php",{
+    axios.get("https://opentdb.com/api.php", {
       params: {
         amount: amountEl.current.value,
         category: categoryEl.current.value
       }
     })
-    .then(response => {
-      const formattedFlashcards = response.data.results.map((questionItem, index) => {
-        const answer = decodeString(questionItem.correct_answer);
-        const options = [...questionItem.incorrect_answers.map(a => decodeString(a))];
-        options.splice(Math.floor(Math.random() * (options.length + 1)), 0, answer);
-        return {
-          id: index,
-          question: decodeString(questionItem.question),
-          answer: answer,
-          options: options
-        };
-      });
+      .then(response => {
+        const formattedFlashcards = response.data.results.map((questionItem, index) => {
+          const answer = decodeString(questionItem.correct_answer);
+          const options = [...questionItem.incorrect_answers.map(a => decodeString(a))];
+          options.splice(Math.floor(Math.random() * (options.length + 1)), 0, answer);
+          return {
+            id: index,
+            question: decodeString(questionItem.question),
+            answer: answer,
+            options: options
+          };
+        });
 
-      setFlashcards(formattedFlashcards);
-    })
-    .catch(err => console.error(err));
+        setFlashcards(formattedFlashcards);
+      })
+      .catch(err => console.error(err));
   }
 
   return (
@@ -91,7 +91,7 @@ function App() {
       <div className="container">
         <FlashList flashcards={flashcards} />
       </div>
-      
+
       <SocialMedia />
     </>
   );

@@ -5,10 +5,10 @@ const SocialMedia = () => {
   const shareOnSocialMedia = (platform) => {
     const url = window.location.href;
     const text = 'Check out this amazing flashcard app for learning!';
-    
+
     let shareUrl = '';
-    
-    switch(platform) {
+
+    switch (platform) {
       case 'twitter':
         shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`;
         break;
@@ -24,7 +24,7 @@ const SocialMedia = () => {
       default:
         return;
     }
-    
+
     window.open(shareUrl, '_blank', 'width=600,height=400');
   };
 
@@ -32,28 +32,28 @@ const SocialMedia = () => {
     <div className="social-media-container">
       <h3>Share with Friends</h3>
       <div className="social-icons">
-        <button 
+        <button
           onClick={() => shareOnSocialMedia('twitter')}
           className="social-icon twitter"
           aria-label="Share on Twitter"
         >
           <i className="fab fa-twitter"></i>
         </button>
-        <button 
+        <button
           onClick={() => shareOnSocialMedia('facebook')}
           className="social-icon facebook"
           aria-label="Share on Facebook"
         >
           <i className="fab fa-facebook"></i>
         </button>
-        <button 
+        <button
           onClick={() => shareOnSocialMedia('linkedin')}
           className="social-icon linkedin"
           aria-label="Share on LinkedIn"
         >
           <i className="fab fa-linkedin"></i>
         </button>
-        <button 
+        <button
           onClick={() => shareOnSocialMedia('whatsapp')}
           className="social-icon whatsapp"
           aria-label="Share on WhatsApp"
