@@ -4,7 +4,7 @@
 
 ## 🌐 Live Demo
 
-🔗 [flash-quiz-steel.vercel.app](https://flash-quiz-cyan.vercel.app)
+🔗 [flash-quiz.vercel.app](https://flash-quiz-cyan.vercel.app)
 
 ## 📋 Features
 
