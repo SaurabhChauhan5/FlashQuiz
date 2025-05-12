@@ -60,10 +60,6 @@ FlashQuiz/
 └── style.css
 ```
 
-## 📘 Acknowledgements
-
-This project was created as part of an assignment for **Think Academies**.
-
 ## 🙋‍♂️ Author
 
 Developed by [Saurabh Chauhan](https://github.com/SaurabhChauhan5)
